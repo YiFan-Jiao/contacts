@@ -1,0 +1,78 @@
+@import url("./reset.css");
+
+main {
+    min-height: 100vh;
+    background-color: #171A22;
+    color: #fff;
+}
+
+.container {
+    width: min(100% - 30px, 1080px);
+    margin-inline: auto;
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    grid-template-rows: 100px 100px auto;
+    gap: 20px;
+    min-height: 100vh;
+}
+
+.page-name {
+    font-size: 50px;
+}
+
+.creat-part {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 800px 180px;
+    gap: 20px;
+}
+
+input {
+    width: 100%;
+    height: 80px;
+    border-radius: 10px;
+    background-color: #272A31;
+    color: #fff;
+    padding: 15px;
+    font-size: 30px;
+}
+
+.create-button {
+    width: 100%;
+    height: 80px;
+    background-color: #009D5D;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 30px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.big-center {
+    width: 100%;
+    height: auto;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr 1fr;
+    border-radius: 20px;
+    align-items: center;
+    justify-items: center;
+}
+
+.Unit {
+    padding: 15px;
+    width: 100%;
+    height: 130px;
+    background-color: #272A31;
+    border-radius: 10px;
+}
+
+.result {
+    font-size: 30px;
+}
