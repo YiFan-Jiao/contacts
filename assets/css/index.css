@@ -30,7 +30,9 @@ main {
     align-items: center;
     justify-items: center;
     grid-template-columns: 800px 180px;
-    gap: 20px;
+    grid-template-rows: 1fr 0.5fr;
+    row-gap: 5px;
+    column-gap: 20px;
 }
 
 input {
@@ -52,6 +54,10 @@ input {
     font-size: 30px;
     line-height: 50px;
     text-align: center;
+}
+
+.error-info {
+    visibility: hidden;
 }
 
 .big-center {
