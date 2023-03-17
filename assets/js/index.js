@@ -7,7 +7,6 @@ const bigCenter = document.querySelector('.big-center');
 const unit = document.querySelector('.Unit');
 const result = document.querySelector('.result');
 
-/* let n = 0; */
 let inputInfo = [];
 const contactsArray = [];
 
@@ -33,24 +32,6 @@ class Contact {
     get getemail() {
         return this.#email
     }
-
-    /* getInfo() {
-        return `${this.getname} ${this.getcity} ${this.getemail}`
-    } */
-
-    /* listContacts() {
-        const contactDiv = document.createElement("div");
-        contactDiv.className = "Unit";
-        contactDiv.innerText = this.getemail;
-        
-        bigCenter.appendChild(contactDiv);
-
-        contactDiv.addEventListener('click', () => {
-            result.innerHTML = this.getInfo();
-            document.querySelector('.Unit').remove();
-        });
-        console.log(33)
-    } */
 }
 
 createBtn.addEventListener('click', () => {
@@ -61,19 +42,38 @@ createBtn.addEventListener('click', () => {
     const verifyCity = /^([A-Za-z]+\s?)*[A-Za-z]$/;
     const verifyEmail = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
 
-    if (verifyName.test(inputInfo[0]) && verifyCity.test(inputInfo[1]) && verifyEmail.test(inputInfo[2])) {
+    if (verifyName.test(inputInfo[0]) && 
+        verifyCity.test(inputInfo[1]) && 
+        verifyEmail.test(inputInfo[2])) {
         const contact = new Contact(inputInfo[0],inputInfo[1],inputInfo[2]);
         errorInfo.style.visibility = 'hidden';
         contactsArray.push(contact);
     } else {
         errorInfo.style.visibility = 'visible';
     }
-    console.log(contactsArray)
+
+    function listContact(array) {
+        bigCenter.innerHTML = '';
+        array.forEach(element => {
+            const contactDiv = document.createElement("div");
+            contactDiv.className = "Unit";
+            contactDiv.innerHTML = `<div class="contact-name">${element.getname}</div>
+                                    <div class="contact-city">${element.getcity}</div>
+                                    <div class="contact-email">${element.getemail}</div>`
+            bigCenter.appendChild(contactDiv);
+            result.innerHTML = array.length;
+        });
+
+        const allUnit = document.querySelectorAll('.Unit');
+        allUnit.forEach((element,index) => {
+            element.addEventListener('click', () => {
+                contactsArray.splice(index,1);
+                element.remove();
+                listContact(contactsArray);
+            });
+        });
+    }
     
+    listContact(contactsArray);
 });
 
-function listContact(array) {
-    array.forEach(element => {
-        element.
-    });
-}
