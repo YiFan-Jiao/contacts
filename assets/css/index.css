@@ -9,12 +9,16 @@ main {
 .container {
     width: min(100% - 30px, 1080px);
     margin-inline: auto;
+}
+
+.grid {
     display: grid;
     align-content: center;
     justify-content: center;
     align-items: center;
     justify-items: center;
     grid-template-rows: 100px 100px auto;
+    grid-template-columns:100%;
     gap: 20px;
     min-height: 100vh;
 }
@@ -24,12 +28,11 @@ main {
 }
 
 .creat-part {
+    width: 100%;
     display: grid;
-    align-content: center;
-    justify-content: center;
     align-items: center;
     justify-items: center;
-    grid-template-columns: 800px 180px;
+    grid-template-columns: 8fr 1.8fr;
     grid-template-rows: 1fr 0.5fr;
     row-gap: 5px;
     column-gap: 20px;
@@ -58,6 +61,7 @@ input {
 
 .error-info {
     visibility: hidden;
+    color: #ff0000;
 }
 
 .big-center {
@@ -72,11 +76,20 @@ input {
 }
 
 .Unit {
-    padding: 15px;
+    padding: 10px;
     width: 100%;
     height: 130px;
     background-color: #272A31;
     border-radius: 10px;
+    border:1px solid #272A31; 
+    display: grid;
+    align-items: center;
+    justify-items: start;
+    font-size: 20px;
+}
+
+.Unit:hover {
+    border:1px solid #ff0000; 
 }
 
 .result {

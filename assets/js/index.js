@@ -36,8 +36,11 @@ class Contact {
 
 createBtn.addEventListener('click', () => {
     
+    // Divide input information into an array by commas
     inputInfo = contactInput.value.trim().split(',');
 
+    // Verify the format and create the object after it is correct. Push them 
+    // into array.
     const verifyName = /^([A-Za-z]+\s?)*[A-Za-z]$/;
     const verifyCity = /^([A-Za-z]+\s?)*[A-Za-z]$/;
     const verifyEmail = /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
@@ -52,23 +55,33 @@ createBtn.addEventListener('click', () => {
         errorInfo.style.visibility = 'visible';
     }
 
+    // Clear all the already added tontacts, loop through the array to create a 
+    // DIV of tontact, and add them.
     function listContact(array) {
         bigCenter.innerHTML = '';
         array.forEach(element => {
             const contactDiv = document.createElement("div");
             contactDiv.className = "Unit";
-            contactDiv.innerHTML = `<div class="contact-name">${element.getname}</div>
-                                    <div class="contact-city">${element.getcity}</div>
-                                    <div class="contact-email">${element.getemail}</div>`
+            contactDiv.innerHTML = `<div class="contact-name">Name: ${element.getname}</div>
+                                    <div class="contact-city">City: ${element.getcity}</div>
+                                    <div class="contact-email">Email: ${element.getemail}</div>`
             bigCenter.appendChild(contactDiv);
-            result.innerHTML = array.length;
+            result.innerHTML = `total: ${array.length}`;
         });
 
+        // Get the divs for all contacts and add click delete events to them.
         const allUnit = document.querySelectorAll('.Unit');
         allUnit.forEach((element,index) => {
             element.addEventListener('click', () => {
                 contactsArray.splice(index,1);
                 element.remove();
+                if(contactsArray.length === 0) {
+                    result.innerHTML = `Let's create contact information`;
+                } else {
+                    result.innerHTML = `total: ${contactsArray.length}`;
+                }
+                // After deletion, call listContact() again to readd the div of 
+                // all contacts
                 listContact(contactsArray);
             });
         });
